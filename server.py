@@ -14,11 +14,16 @@ key = bytes.fromhex(key_hex_str)
 
 
 def let_me_serve_you_bitch_lasagna(data, image_path='./image.png'):
-    img = Image.open("./image.png")
-    exif_dict = piexif.load(img.info["exif"])
+    img = Image.open(image_path)
+    if "exif" in img.info:
+        exif_dict = piexif.load(img.info["exif"])
+    else:
+        exif_dict = {"0th": {}, "Exif": {},
+                     "GPS": {}, "1st": {}, "thumbnail": None}
     exif_dict["0th"][piexif.ImageIFD.ImageDescription] = data.encode()
     exif_bytes = piexif.dump(exif_dict)
     img.save(image_path, "jpeg", exif=exif_bytes)
+    img.close()
 
 
 @app.route('/hej_monika', methods=['GET'])
